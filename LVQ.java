@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-class LVQ {
+class Lvq {
 
     // Distance calculation
     public int winner(double[][] weights, double[] sample) {
@@ -33,7 +33,7 @@ class LVQ {
     }
 }
 
-public class Main {
+public class LVQ {
 
     public static void main(String[] args) {
 
@@ -62,7 +62,7 @@ public class Main {
         Y.remove(0);
         Y.remove(0);
 
-        LVQ lvq = new LVQ();
+        Lvq lvq = new Lvq();
         double alpha = 0.1;
         int epochs = 3;
 
