@@ -1,0 +1,61 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class FuzzySet {
+
+    public static void main(String[] args) {
+        // Define fuzzy sets using HashMap
+        Map<String, Double> fuzzySetA = new HashMap<>();
+        fuzzySetA.put("x1", 0.2);
+        fuzzySetA.put("x2", 0.7);
+        fuzzySetA.put("x3", 1.0);
+        fuzzySetA.put("x4", 0.5);
+
+        Map<String, Double> fuzzySetB = new HashMap<>();
+        fuzzySetB.put("x1", 0.8);
+        fuzzySetB.put("x2", 0.4);
+        fuzzySetB.put("x3", 0.6);
+        fuzzySetB.put("x4", 0.9);
+
+        // Perform fuzzy union
+        Map<String, Double> unionAB = fuzzyUnion(fuzzySetA, fuzzySetB);
+        // Perform fuzzy intersection
+        Map<String, Double> intersectionAB = fuzzyIntersection(fuzzySetA, fuzzySetB);
+        // Perform fuzzy complement
+        Map<String, Double> complementA = fuzzyComplement(fuzzySetA);
+
+        // Display results
+        System.out.println("Fuzzy Set A: " + fuzzySetA);
+        System.out.println("Fuzzy Set B: " + fuzzySetB);
+        System.out.println("Union of A and B: " + unionAB);
+        System.out.println("Intersection of A and B: " + intersectionAB);
+        System.out.println("Complement of A: " + complementA);
+    }
+
+    // Fuzzy Union (max operation)
+    public static Map<String, Double> fuzzyUnion(Map<String, Double> A, Map<String, Double> B) {
+        Map<String, Double> result = new HashMap<>();
+        for (String key : A.keySet()) {
+            result.put(key, Math.max(A.get(key), B.get(key)));
+        }
+        return result;
+    }
+
+    // Fuzzy Intersection (min operation)
+    public static Map<String, Double> fuzzyIntersection(Map<String, Double> A, Map<String, Double> B) {
+        Map<String, Double> result = new HashMap<>();
+        for (String key : A.keySet()) {
+            result.put(key, Math.min(A.get(key), B.get(key)));
+        }
+        return result;
+    }
+
+    // Fuzzy Complement (1 - membership degree)
+    public static Map<String, Double> fuzzyComplement(Map<String, Double> A) {
+        Map<String, Double> result = new HashMap<>();
+        for (String key : A.keySet()) {
+            result.put(key, 1 - A.get(key));
+        }
+        return result;
+    }
+}
