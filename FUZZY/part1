@@ -1,7 +1,0 @@
-Dim = {0:1, 60:0.6, 120:0.2}
-Normal = {0:0.2, 60:0.7, 120:1.0}
-
-FuzzyOps.union(Dim, Normal)
-FuzzyOps.intersection(Dim, Normal)
-FuzzyOps.complement(Dim)
-FuzzyOps.alpha_cut(Dim, 0.5)
